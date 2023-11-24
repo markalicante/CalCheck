@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
 
             } catch(e : Exception){
-                Log.e("error_espina", e.message.toString())
+                Log.e("Error_CalCheck", e.message.toString())
             }
         }
 
