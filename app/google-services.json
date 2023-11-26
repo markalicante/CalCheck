@@ -1,21 +1,22 @@
 {
   "project_info": {
-    "project_number": "1074512261022",
-    "project_id": "fir-3itfespina",
-    "storage_bucket": "fir-3itfespina.appspot.com"
+    "project_number": "155187669100",
+    "firebase_url": "https://calcheck-b85af-default-rtdb.firebaseio.com",
+    "project_id": "calcheck-b85af",
+    "storage_bucket": "calcheck-b85af.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1074512261022:android:aaf6d28d2c442b371db08f",
+        "mobilesdk_app_id": "1:155187669100:android:e6fd45810e1ae63c075049",
         "android_client_info": {
-          "package_name": "com.example.firebaseconnection3itf"
+          "package_name": "com.example.calcheck"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDrznUgLSoMQDig6QN2_uoOQkxmMwKXo3w"
+          "current_key": "AIzaSyAvvFqqULdgPgFFcwA6NjkLU9Jj190aAvM"
         }
       ],
       "services": {

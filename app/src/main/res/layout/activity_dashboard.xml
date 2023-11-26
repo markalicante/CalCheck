@@ -92,6 +92,17 @@
                 android:textStyle="bold" />
 
         </RelativeLayout>
+
+
     </androidx.cardview.widget.CardView>
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="156dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="@color/steel_blue"
+        android:text="Logout"
+        android:textSize="18sp"
+        app:cornerRadius="20dp" />
 
 </LinearLayout>
