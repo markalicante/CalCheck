@@ -63,7 +63,7 @@ class RegistrationForm : AppCompatActivity() {
 
                     // Pass the UID to the function that handles user registration
                     userUid?.let { uid ->
-                        handleUserRegistration(uid)
+                        handleUserRegistration(uid, email, password)
                     }
                 } else {
                     showToast(this, "Registration failed. Please try again.")
@@ -72,11 +72,26 @@ class RegistrationForm : AppCompatActivity() {
             }
     }
 
-    private fun handleUserRegistration(uid: String) {
+    private fun handleUserRegistration(uid: String, email: String, password : String) {
         val userReference = databaseReference.child(uid)
 
-        startActivity(Intent(this@RegistrationForm, MainActivity::class.java))
-        finish()
+        // Create a UserAccounts object with the necessary data
+        val newUser = UserAccounts(email, password, 0) // Customize this based on your data model
+
+        // Set the user data in the Realtime Database
+        userReference.setValue(newUser)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    showToast(this@RegistrationForm, "User data saved successfully!")
+
+                    // Redirect to the main activity or another screen
+                    startActivity(Intent(this@RegistrationForm, MainActivity::class.java))
+                    finish()
+                } else {
+                    showToast(this@RegistrationForm, "Failed to save user data.")
+                    Log.e("Error_CalCheck", task.exception?.message.toString())
+                }
+            }
     }
 
     fun showToast(context: Context, message: String) {

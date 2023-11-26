@@ -90,11 +90,15 @@ class MainActivity : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     // User exists in the database
-                    showToast(applicationContext, "Welcome back!")
+                    val user = snapshot.getValue(UserAccounts::class.java)
+
+                    if (user != null) {
+                        // Use the user data as needed (e.g., update UI, save to preferences)
+                        showToast(applicationContext, "Welcome back, ${user.userName}!")
+                    }
                 } else {
                     // User doesn't exist in the database
                     showToast(applicationContext, "New user! Welcome!")
-
                 }
 
                 startActivity(Intent(this@MainActivity, Dashboard::class.java))
