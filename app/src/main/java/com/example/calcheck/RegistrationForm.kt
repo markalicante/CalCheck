@@ -21,6 +21,7 @@ class RegistrationForm : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration_form)
+        var validateObject = ValidationClass()
 
         databaseReference = FirebaseDatabase.getInstance().getReference("UserAccounts")
         dataAuth = FirebaseAuth.getInstance()
@@ -37,7 +38,12 @@ class RegistrationForm : AppCompatActivity() {
 
                 // Validate if the fields are not empty
                 if (username.isNotEmpty() && password.isNotEmpty()) {
+                    if (validateObject.ValidatePassword(password)){
                     registerUser(username, password)
+                    }
+                    else {
+                        showToast(this, "Please enter a valid password.")
+                    }
                 } else {
                     showToast(this, "Please enter username and password.")
                 }

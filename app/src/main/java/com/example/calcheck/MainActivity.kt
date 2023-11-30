@@ -27,6 +27,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+
         FirebaseApp.initializeApp(this)
 
         databaseReference = FirebaseDatabase.getInstance().getReference("UserAccounts")
@@ -41,6 +43,8 @@ class MainActivity : AppCompatActivity() {
             try{
                 val username = editTextUNameLogin.text.toString()
                 val password = editTextPWLogin.text.toString()
+
+
 
                 // Validate if the fields are not empty
                 if (username.isNotEmpty() && password.isNotEmpty()) {
