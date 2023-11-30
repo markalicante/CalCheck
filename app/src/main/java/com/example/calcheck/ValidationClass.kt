@@ -23,7 +23,7 @@ class ValidationClass {
             }
             return false
         } catch (e : Exception){
-            Log.e("error_victoria",e.message.toString());
+            Log.e("error_calcheck",e.message.toString());
             return false;
         }
     }

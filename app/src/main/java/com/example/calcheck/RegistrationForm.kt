@@ -27,6 +27,7 @@ class RegistrationForm : AppCompatActivity() {
         dataAuth = FirebaseAuth.getInstance()
 
         var editTextUNameRegister : EditText = findViewById(R.id.edtTextUNameRegister)
+        var editTextEmailRegister : EditText =  findViewById(R.id.edtTextEmailRegister)
         var editTextPWRegister : EditText = findViewById(R.id.edtTextPWRegister)
         var toLogin : TextView = findViewById(R.id.loginText)
         var buttonRegister : Button = findViewById(R.id.btnRegister)
@@ -34,12 +35,13 @@ class RegistrationForm : AppCompatActivity() {
         buttonRegister.setOnClickListener(){
             try{
                 val username = editTextUNameRegister.text.toString()
+                val useremail = editTextEmailRegister.text.toString()
                 val password = editTextPWRegister.text.toString()
 
                 // Validate if the fields are not empty
-                if (username.isNotEmpty() && password.isNotEmpty()) {
+                if (username.isNotEmpty() && password.isNotEmpty() && useremail.isNotEmpty()) {
                     if (validateObject.ValidatePassword(password)){
-                    registerUser(username, password)
+                    registerUser(username, useremail, password)
                     }
                     else {
                         showToast(this, "Please enter a valid password.")
@@ -58,7 +60,7 @@ class RegistrationForm : AppCompatActivity() {
         }
 
     }
-    private fun registerUser(email: String, password: String) {
+    private fun registerUser(username: String, email: String, password: String) {
         dataAuth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
@@ -69,7 +71,7 @@ class RegistrationForm : AppCompatActivity() {
 
                     // Pass the UID to the function that handles user registration
                     userUid?.let { uid ->
-                        handleUserRegistration(uid, email, password)
+                        handleUserRegistration(uid, username, email, password)
                     }
                 } else {
                     showToast(this, "Registration failed. Please try again.")
@@ -78,11 +80,11 @@ class RegistrationForm : AppCompatActivity() {
             }
     }
 
-    private fun handleUserRegistration(uid: String, email: String, password : String) {
+    private fun handleUserRegistration(uid: String, username: String, email: String, password : String) {
         val userReference = databaseReference.child(uid)
 
         // Create a UserAccounts object with the necessary data
-        val newUser = UserAccounts(email, password, 0) // Customize this based on your data model
+        val newUser = UserAccounts(username, email, password, 0) // Customize this based on your data model
 
         // Set the user data in the Realtime Database
         userReference.setValue(newUser)

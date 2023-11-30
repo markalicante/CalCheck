@@ -34,21 +34,21 @@ class MainActivity : AppCompatActivity() {
         databaseReference = FirebaseDatabase.getInstance().getReference("UserAccounts")
         dataAuth = FirebaseAuth.getInstance()
 
-        var editTextUNameLogin : EditText = findViewById(R.id.edtTextUNameLogin)
+        var editTextEmailLogin : EditText = findViewById(R.id.edtTextUNameLogin)
         var editTextPWLogin : EditText = findViewById(R.id.edtTextPWLogin)
         var toSignup : TextView = findViewById(R.id.signupText)
         var buttonLogin : Button = findViewById(R.id.btnLogin)
 
         buttonLogin.setOnClickListener(){
             try{
-                val username = editTextUNameLogin.text.toString()
+                val email = editTextEmailLogin.text.toString()
                 val password = editTextPWLogin.text.toString()
 
 
 
                 // Validate if the fields are not empty
-                if (username.isNotEmpty() && password.isNotEmpty()) {
-                    loginUser(username, password)
+                if (email.isNotEmpty() && password.isNotEmpty()) {
+                    loginUser(email, password)
                 } else {
                     showToast(this, "Please enter username and password.")
                 }
@@ -98,7 +98,7 @@ class MainActivity : AppCompatActivity() {
 
                     if (user != null) {
                         // Use the user data as needed (e.g., update UI, save to preferences)
-                        showToast(applicationContext, "Welcome back, ${user.userName}!")
+                        showToast(applicationContext, "Welcome back, ${user.userEmail}!")
                     }
                 } else {
                     // User doesn't exist in the database
