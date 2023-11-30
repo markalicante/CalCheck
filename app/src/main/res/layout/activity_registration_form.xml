@@ -36,7 +36,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="368dp">
+            android:layout_height="460dp">
 
             <TextView
                 android:id="@+id/txtViewRegister"
@@ -47,11 +47,11 @@
                 android:textColor="@color/steel_blue"
                 android:textSize="36sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.11" />
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent"
+                card_view:layout_constraintVertical_bias="0.11" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/txtInputUNameRegister"
@@ -63,10 +63,9 @@
                 app:hintTextColor="@color/steel_blue"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.483"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.37"
+                app:layout_constraintVertical_bias="0.298"
                 app:startIconTint="@color/steel_blue">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -79,19 +78,45 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/txtInputPWRegister"
+                android:id="@+id/txtInputEmailRegister"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="291dp"
-                android:layout_height="60dp"
+                android:layout_width="289dp"
+                android:layout_height="58dp"
                 app:boxStrokeColor="@color/steel_blue"
-                app:endIconDrawable="@drawable/eye_password"
                 app:endIconTint="@color/steel_blue"
                 app:hintTextColor="@color/steel_blue"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.592"
+                app:layout_constraintVertical_bias="0.475"
+                app:startIconTint="@color/steel_blue">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtTextEmailRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email"
+                    android:textColorHighlight="@color/steel_blue"
+                    android:textColorLink="@color/steel_blue" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtInputPWRegister"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="290dp"
+                android:layout_height="58dp"
+                app:boxStrokeColor="@color/steel_blue"
+                app:endIconDrawable="@drawable/eye_password"
+                app:endIconMode="password_toggle"
+                app:endIconTint="@color/steel_blue"
+                app:hintTextColor="@color/steel_blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.516"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.647"
                 app:startIconTint="@color/steel_blue">
 
                 <com.google.android.material.textfield.TextInputEditText
