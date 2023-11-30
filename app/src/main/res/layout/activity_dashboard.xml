@@ -78,18 +78,40 @@
                 android:progressDrawable="@drawable/circular_progress_bar"
                 android:textAlignment="center" />
 
+
             <TextView
-                android:id="@+id/progress_text"
+                android:id="@+id/current_progress_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:gravity="center"
+                android:layout_centerHorizontal="true"
+                android:layout_above="@+id/progress_over"
                 android:text="---"
                 android:textColor="@color/steel_blue"
                 android:textSize="28sp"
                 android:textStyle="bold" />
+
+            <View
+                android:id="@+id/progress_over"
+                android:layout_width="25dp"
+                android:layout_height="3dp"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="4dp"
+                android:background="@color/steel_blue" />
+
+            <TextView
+                android:id="@+id/progress_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/progress_over"
+                android:layout_marginTop="5dp"
+                android:text="---"
+                android:textColor="@color/steel_blue"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+
 
         </RelativeLayout>
 
