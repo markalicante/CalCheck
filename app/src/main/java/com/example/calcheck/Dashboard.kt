@@ -28,9 +28,9 @@ class Dashboard : AppCompatActivity() {
         var currentProgressText : TextView = findViewById(R.id.current_progress_text)
         var buttonLogout : Button = findViewById(R.id.btnLogout)
 
-        currentProgressText.text = "30"
+        currentProgressText.text = "500"
 
-        progressBar.progress = currentProgressText.text.toString().toInt()
+
 
         val uid = auth.currentUser?.uid
         val valueRef = db.child(uid.toString()).child("userTargetCal")
@@ -41,6 +41,7 @@ class Dashboard : AppCompatActivity() {
 
                 if (progressValue != null) {
                     progressBar.max = progressValue.toInt()
+                    progressBar.progress = currentProgressText.text.toString().toInt()
                     progressText.text = progressValue.toString()
                 } else {
                     // Handle the case where the value is not a valid integer

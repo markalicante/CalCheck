@@ -74,7 +74,7 @@ class RegistrationForm : AppCompatActivity() {
 
                     // Pass the UID to the function that handles user registration
                     userUid?.let { uid ->
-                        handleUserRegistration(uid, username, email, password, targetCal)
+                        handleUserRegistration(uid, username, email, targetCal)
                     }
                 } else {
                     showToast(this, "Registration failed. Please try again.")
@@ -83,11 +83,11 @@ class RegistrationForm : AppCompatActivity() {
             }
     }
 
-    private fun handleUserRegistration(uid: String, username: String, email: String, password : String, targetCal : Int) {
+    private fun handleUserRegistration(uid: String, username: String, email: String, targetCal : Int) {
         val userReference = databaseReference.child(uid)
 
         // Create a UserAccounts object with the necessary data
-        val newUser = UserAccounts(username, email, password, targetCal) // Customize this based on your data model
+        val newUser = UserAccounts(username, email, targetCal) // Customize this based on your data model
 
         // Set the user data in the Realtime Database
         userReference.setValue(newUser)

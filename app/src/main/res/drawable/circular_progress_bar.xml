@@ -10,12 +10,7 @@
             android:shape="ring"
             android:thickness="8dp"
             android:useLevel="true">
-            <gradient
-                android:angle="0"
-                android:endColor="@color/steel_blue"
-                android:startColor="@color/light_steel_blue"
-                android:type="sweep"
-                android:useLevel="false" />
+            <solid android:color="@color/steel_blue" />
         </shape>
 
     </rotate>
