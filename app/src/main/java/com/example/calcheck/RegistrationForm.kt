@@ -59,7 +59,7 @@ class RegistrationForm : AppCompatActivity() {
         }
 
         toLogin.setOnClickListener(){
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, LoginForm::class.java))
         }
 
     }
@@ -96,7 +96,7 @@ class RegistrationForm : AppCompatActivity() {
                     showToast(this@RegistrationForm, "User data saved successfully!")
 
                     // Redirect to the main activity or another screen
-                    startActivity(Intent(this@RegistrationForm, MainActivity::class.java))
+                    startActivity(Intent(this@RegistrationForm, LoginForm::class.java))
                     finish()
                 } else {
                     showToast(this@RegistrationForm, "Failed to save user data.")

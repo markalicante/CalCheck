@@ -28,9 +28,7 @@ class Dashboard : AppCompatActivity() {
         var currentProgressText : TextView = findViewById(R.id.current_progress_text)
         var buttonLogout : Button = findViewById(R.id.btnLogout)
 
-        currentProgressText.text = "500"
-
-
+        currentProgressText.text = "100"
 
         val uid = auth.currentUser?.uid
         val valueRef = db.child(uid.toString()).child("userTargetCal")
@@ -62,8 +60,9 @@ class Dashboard : AppCompatActivity() {
 
     private fun logoutUser() {
         auth.signOut()
+        
 
-        startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this, LoginForm::class.java))
 
         finish()
     }
