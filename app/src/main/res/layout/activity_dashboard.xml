@@ -2,129 +2,153 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="@drawable/mainactivitybg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:background="@drawable/backgroundapp"
+    tools:context=".Dashboard">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imgViewLogo"
-            android:layout_width="176dp"
-            android:layout_height="98dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constrainLayout"
+            android:layout_width="411dp"
+            android:layout_height="596dp"
+            android:layout_marginBottom="1dp"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.553"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            card_view:srcCompat="@drawable/applogo" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/txtViewRegister"
-        android:layout_width="201dp"
-        android:layout_height="51dp"
-        android:text="CALCHECK"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.11" />
+            <RelativeLayout
+                android:id="@+id/progress_layout"
+                android:layout_width="match_parent"
+                android:layout_height="380dp"
+                android:layout_marginTop="37dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        android:background="@drawable/custom_edittext"
-        app:cardCornerRadius="30dp"
-        app:cardElevation="20dp">
 
-        <RelativeLayout
-            android:id="@+id/progress_layout"
-            android:layout_width="match_parent"
-            android:layout_height="380dp">
+                <ProgressBar
+                    android:id="@+id/progress_bar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/circular_shape"
+                    android:indeterminate="false"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/current_progress_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/progress_over"
+                    android:layout_centerHorizontal="true"
+                    android:text="---"
+                    android:textColor="@color/steel_blue"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/progress_over"
+                    android:layout_width="100dp"
+                    android:layout_height="2dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="4dp"
+                    android:background="@color/steel_blue" />
+
+                <TextView
+                    android:id="@+id/progress_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/progress_over"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:text="---"
+                    android:textColor="@color/steel_blue"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+
+
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/progress_text_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="0dp"
-                android:layout_marginRight="0dp"
+                android:layout_width="210dp"
+                android:layout_height="61dp"
+                android:fontFamily="sans-serif-condensed-light"
                 android:gravity="center"
-                android:text="Calorie Count"
-                android:textColor="@color/steel_blue"
-                android:textSize="28sp"
-                android:textStyle="bold" />
+                android:text="CALORIES"
+                android:textColor="@color/black"
+                android:textSize="35sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.089" />
 
-            <ProgressBar
-                android:id="@+id/progress_bar"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/circular_shape"
-                android:indeterminate="false"
-                android:progressDrawable="@drawable/circular_progress_bar"
-                android:textAlignment="center" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="413dp"
+            android:layout_height="135dp"
+            android:layout_marginStart="16dp"
+            android:background="@color/steel_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0">
 
-            <TextView
-                android:id="@+id/current_progress_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_above="@+id/progress_over"
-                android:text="---"
-                android:textColor="@color/steel_blue"
-                android:textSize="28sp"
-                android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="124dp"
+                android:layout_height="99dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.605"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.555"
+                app:srcCompat="@drawable/applogo" />
 
-            <View
-                android:id="@+id/progress_over"
-                android:layout_width="25dp"
-                android:layout_height="3dp"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="4dp"
-                android:background="@color/steel_blue" />
+            <ImageView
+                android:id="@+id/profileButton"
+                android:layout_width="67dp"
+                android:layout_height="66dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.147"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.478"
+                app:srcCompat="@drawable/profile" />
 
-            <TextView
-                android:id="@+id/progress_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/progress_over"
-                android:layout_marginTop="5dp"
-                android:text="---"
-                android:textColor="@color/steel_blue"
-                android:textSize="28sp"
-                android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/nextPageButton"
+                android:layout_width="64dp"
+                android:layout_height="66dp"
+                android:onClick="nextPage"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.911"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.478"
+                app:srcCompat="@drawable/nextbutton" />
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-        </RelativeLayout>
-
-
-    </androidx.cardview.widget.CardView>
-    <Button
-        android:id="@+id/btnLogout"
-        android:layout_width="156dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="4dp"
-        android:backgroundTint="@color/steel_blue"
-        android:text="Logout"
-        android:textSize="18sp"
-        app:cornerRadius="20dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

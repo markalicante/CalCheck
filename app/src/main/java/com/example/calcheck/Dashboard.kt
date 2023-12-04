@@ -3,7 +3,9 @@ package com.example.calcheck
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
@@ -26,7 +28,8 @@ class Dashboard : AppCompatActivity() {
         var progressBar: ProgressBar = findViewById(R.id.progress_bar)
         var progressText: TextView = findViewById(R.id.progress_text)
         var currentProgressText : TextView = findViewById(R.id.current_progress_text)
-        var buttonLogout : Button = findViewById(R.id.btnLogout)
+        var nextPage : ImageView = findViewById(R.id.nextPageButton)
+
 
         currentProgressText.text = "100"
 
@@ -52,19 +55,19 @@ class Dashboard : AppCompatActivity() {
             }
         })
 
-        buttonLogout.setOnClickListener {
-            logoutUser()
-        }
-
     }
 
     private fun logoutUser() {
         auth.signOut()
-        
+
 
         startActivity(Intent(this, LoginForm::class.java))
 
         finish()
     }
 
+    fun nextPage(view: View){
+        val page2 = Intent(this, FoodActivity::class.java)
+        startActivity(page2)
+    }
 }
