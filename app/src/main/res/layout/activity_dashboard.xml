@@ -126,6 +126,7 @@
                 android:id="@+id/profileButton"
                 android:layout_width="67dp"
                 android:layout_height="66dp"
+                android:onClick="toProfile"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.147"

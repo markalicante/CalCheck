@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -57,17 +56,14 @@ class Dashboard : AppCompatActivity() {
 
     }
 
-    private fun logoutUser() {
-        auth.signOut()
 
-
-        startActivity(Intent(this, LoginForm::class.java))
-
-        finish()
-    }
 
     fun nextPage(view: View){
         val page2 = Intent(this, FoodActivity::class.java)
         startActivity(page2)
+    }
+    fun toProfile(view: View){
+        val profilePage = Intent(this, ProfileActivity::class.java)
+        startActivity(profilePage)
     }
 }
