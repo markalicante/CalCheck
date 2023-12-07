@@ -8,29 +8,14 @@
     tools:context=".FoodActivity">
 
     <ScrollView
-        android:id="@+id/scrollView"
-        android:layout_width="411dp"
-        android:layout_height="596dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
 
         <LinearLayout
-            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="368dp"
-                android:layout_height="127dp"
-                android:layout_margin="20dp"
-                app:cardBackgroundColor="#C8C8C8"
-                app:cardCornerRadius="15dp" />
-        </LinearLayout>
+            android:orientation="vertical"></LinearLayout>
     </ScrollView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -83,4 +68,5 @@
             app:srcCompat="@drawable/prevbutton" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
