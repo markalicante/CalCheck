@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -105,6 +106,11 @@ class ProfileActivity : AppCompatActivity() {
     }
     fun showToast(context: Context, message: String) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+    }
+
+    fun prevPage(view: View){
+        val page2 = Intent(this, Dashboard::class.java)
+        startActivity(page2)
     }
 
     private fun logoutUser() {

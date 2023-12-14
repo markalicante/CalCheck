@@ -11,7 +11,8 @@
         android:layout_height="wrap_content"
         android:text="Name Placeholder"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/historyDateTextView"
@@ -19,13 +20,15 @@
         android:layout_height="wrap_content"
         android:text="Date Placeholder"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/historyCaloriesTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Calories Placeholder"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:textColor="@color/black"/>
 
 </LinearLayout>

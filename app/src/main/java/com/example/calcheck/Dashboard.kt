@@ -1,5 +1,6 @@
 package com.example.calcheck
 
+import ResetHelper
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +20,7 @@ import com.google.firebase.database.ValueEventListener
 
 class Dashboard : AppCompatActivity() {
 
+    private val resetHelper = ResetHelper()
     lateinit var db : DatabaseReference
     lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -76,7 +78,7 @@ class Dashboard : AppCompatActivity() {
                 // Handle errors
             }
         })
-
+        resetHelper.performDailyReset(this)
     }
 
 
