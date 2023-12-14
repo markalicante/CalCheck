@@ -53,65 +53,66 @@ class ResetHelper {
             val userFoodRef = databaseReference.child(uid).child("foods")
             userFoodRef.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    val historyList = mutableListOf<FoodHistoryItem>()
+                    val foodItemsForCurrentDay = mutableListOf<FoodItem>()
 
                     for (snapshot in dataSnapshot.children) {
                         val foodItem = snapshot.getValue(FoodItem::class.java)
                         foodItem?.let {
-                            // Create a FoodHistoryItem and add it to the history list
-                            val historyItem = FoodHistoryItem(
-                                getCurrentDay(),
-                                listOf(FoodItem("Some Food", it.calories ?: 0))
-                            )
-                            historyList.add(historyItem)
+                            foodItemsForCurrentDay.add(it)
                         }
                     }
 
-                    // Fetch the current history
-                    val userHistoryRef = databaseReference.child(uid).child("history")
-                    userHistoryRef.addListenerForSingleValueEvent(object : ValueEventListener {
-                        override fun onDataChange(historyDataSnapshot: DataSnapshot) {
-                            val currentHistoryList = mutableListOf<FoodHistoryItem>()
+                    // Check if there are entries for the current day
+                    if (foodItemsForCurrentDay.isNotEmpty()) {
+                        val historyList = mutableListOf<FoodHistoryItem>()
 
-                            for (historySnapshot in historyDataSnapshot.children) {
-                                val historyItem = historySnapshot.getValue(FoodHistoryItem::class.java)
-                                historyItem?.let {
-                                    currentHistoryList.add(it)
-                                }
-                            }
-
-                            // Create a list of FoodItem objects for the current day
-                            val foodItemsForCurrentDay = mutableListOf<FoodItem>()
-
-                            for (snapshot in dataSnapshot.children) {
-                                val foodItem = snapshot.getValue(FoodItem::class.java)
-                                foodItem?.let {
-                                    foodItemsForCurrentDay.add(it)
-                                }
-                            }
-
-                            // Create a FoodHistoryItem and add it to the current history list
-                            val newHistoryItem = FoodHistoryItem(
+                        for (foodItem in foodItemsForCurrentDay) {
+                            // Create a FoodHistoryItem and add it to the history list
+                            val historyItem = FoodHistoryItem(
                                 getCurrentDay(),
-                                foodItemsForCurrentDay
+                                listOf(FoodItem("Some Food", foodItem.calories ?: 0))
                             )
-                            currentHistoryList.add(newHistoryItem)
-
-                            // Save the updated history list to the "history" node
-                            userHistoryRef.setValue(currentHistoryList)
-
-                            // Remove the data from the "foods" node
-                            userFoodRef.removeValue()
-
-                            showToast(context, "Food list reset for today. Data moved to history.")
+                            historyList.add(historyItem)
                         }
 
-                        override fun onCancelled(databaseError: DatabaseError) {
-                            // Handle errors
-                            Log.e("Error_CalCheck", "Error reading user's food history: ${databaseError.message}")
-                            showToast(context, "Failed to retrieve food history. Please try again.")
-                        }
-                    })
+                        // Fetch the current history
+                        val userHistoryRef = databaseReference.child(uid).child("history")
+                        userHistoryRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                            override fun onDataChange(historyDataSnapshot: DataSnapshot) {
+                                val currentHistoryList = mutableListOf<FoodHistoryItem>()
+
+                                for (historySnapshot in historyDataSnapshot.children) {
+                                    val historyItem = historySnapshot.getValue(FoodHistoryItem::class.java)
+                                    historyItem?.let {
+                                        currentHistoryList.add(it)
+                                    }
+                                }
+
+                                // Create a FoodHistoryItem and add it to the current history list
+                                val newHistoryItem = FoodHistoryItem(
+                                    getCurrentDay(),
+                                    foodItemsForCurrentDay
+                                )
+                                currentHistoryList.add(newHistoryItem)
+
+                                // Save the updated history list to the "history" node
+                                userHistoryRef.setValue(currentHistoryList)
+
+                                // Remove the data from the "foods" node
+                                userFoodRef.removeValue()
+
+                                showToast(context, "Food list reset for today. Data moved to history.")
+                            }
+
+                            override fun onCancelled(databaseError: DatabaseError) {
+                                // Handle errors
+                                Log.e("Error_CalCheck", "Error reading user's food history: ${databaseError.message}")
+                                showToast(context, "Failed to retrieve food history. Please try again.")
+                            }
+                        })
+                    } else {
+                        showToast(context, "No entries for today. Food list not reset.")
+                    }
                 }
 
                 override fun onCancelled(databaseError: DatabaseError) {
