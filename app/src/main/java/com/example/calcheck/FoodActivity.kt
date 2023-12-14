@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -32,6 +33,10 @@ class FoodActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_food)
+
+        val textViewDate: TextView = findViewById(R.id.dateNow)
+        val currentDate = getCurrentDate()
+        textViewDate.text = "Current Date: $currentDate"
 
         Log.d("FoodActivity", "onCreate started")
 
@@ -109,6 +114,12 @@ class FoodActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putInt("current_day", TESTING_CURRENT_DAY)
         super.onSaveInstanceState(outState)
+    }
+
+    private fun getCurrentDate(): String {
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val currentDate = dateFormat.format(Date())
+        return currentDate
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {

@@ -37,7 +37,7 @@ class FoodAdapter : RecyclerView.Adapter<FoodAdapter.ViewHolder>() {
             val caloriesTextView: TextView = itemView.findViewById(R.id.caloriesTextView)
 
             foodNameTextView.text = foodItem.name
-            caloriesTextView.text = foodItem.calories.toString()
+            caloriesTextView.text = "Calories: " + foodItem.calories.toString()
         }
     }
 }
