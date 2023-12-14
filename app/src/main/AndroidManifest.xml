@@ -13,6 +13,9 @@
         android:theme="@style/Theme.CalCheck"
         tools:targetApi="31">
         <activity
+            android:name=".FoodHistoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddFood"
             android:exported="false" />
         <activity

@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroundapp"
-    tools:context=".FoodActivity">
+    tools:context=".FoodHistoryActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -36,12 +35,12 @@
                     app:srcCompat="@drawable/dateiconblack" />
 
                 <TextView
-                    android:id="@+id/dateNow"
-                    android:layout_width="163dp"
+                    android:id="@+id/history"
+                    android:layout_width="170dp"
                     android:layout_height="61dp"
                     android:fontFamily="sans-serif-condensed-light"
                     android:gravity="center"
-                    android:text="DATE NOW"
+                    android:text="HISTORY"
                     android:textColor="@color/black"
                     android:textSize="35sp"
                     android:textStyle="bold"
@@ -53,11 +52,11 @@
                     app:layout_constraintVertical_bias="0.026" />
 
                 <TextView
-                    android:id="@+id/txtViewFoods"
+                    android:id="@+id/txtViewHistory"
                     android:layout_width="104dp"
                     android:layout_height="24dp"
                     android:fontFamily="sans-serif-condensed-light"
-                    android:text="FOODS"
+                    android:text="HISTORY"
                     android:textColor="@color/black"
                     android:textSize="20dp"
                     android:textStyle="bold"
@@ -68,21 +67,8 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.169" />
 
-                <ImageView
-                    android:id="@+id/addButton1"
-                    android:layout_width="29dp"
-                    android:layout_height="29dp"
-                    android:clickable="true"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.958"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.17"
-                    app:srcCompat="@drawable/addbutton" />
-
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerFood"
+                    android:id="@+id/recyclerHistory"
                     android:layout_width="352dp"
                     android:layout_height="450dp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -91,29 +77,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.887" />
-
-                <Button
-                    android:id="@+id/historyButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="History"
-                    app:layout_constraintBottom_toTopOf="@+id/recyclerFood"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.792"
-                    app:layout_constraintStart_toEndOf="@+id/dateNow"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.346" />
-
-                <Button
-                    android:id="@+id/resetButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Simulate Daily Reset"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.948" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
