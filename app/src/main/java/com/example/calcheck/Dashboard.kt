@@ -1,12 +1,15 @@
 package com.example.calcheck
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -30,22 +33,42 @@ class Dashboard : AppCompatActivity() {
         var nextPage : ImageView = findViewById(R.id.nextPageButton)
 
 
-        currentProgressText.text = "100"
-
         val uid = auth.currentUser?.uid
-        val valueRef = db.child(uid.toString()).child("userTargetCal")
+        val targetCalRef = db.child(uid.toString()).child("userTargetCal")
+        val userFoodRef = db.child(uid.toString()).child("foods")
 
-        valueRef.addValueEventListener(object : ValueEventListener {
+        targetCalRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val progressValue = dataSnapshot.getValue(Long::class.java)
+                val targetCalories = dataSnapshot.getValue(Long::class.java)
 
-                if (progressValue != null) {
-                    progressBar.max = progressValue.toInt()
-                    progressBar.progress = currentProgressText.text.toString().toInt()
-                    progressText.text = progressValue.toString()
+                if (targetCalories != null) {
+                    progressBar.max = targetCalories.toInt()
+
+                    // Retrieve the user's food list
+                    userFoodRef.addValueEventListener(object : ValueEventListener {
+                        override fun onDataChange(foodDataSnapshot: DataSnapshot) {
+                            var totalCalories = 0
+
+                            for (foodSnapshot in foodDataSnapshot.children) {
+                                val foodItem = foodSnapshot.getValue(FoodItem::class.java)
+                                totalCalories += foodItem?.calories ?: 0
+                            }
+
+                            // Update the progress bar and text based on total calories
+                            progressBar.progress = totalCalories
+                            progressText.text = targetCalories.toInt().toString()
+                            currentProgressText.text = totalCalories.toString()
+                        }
+
+                        override fun onCancelled(databaseError: DatabaseError) {
+                            // Handle errors
+                        }
+                    })
+
                 } else {
-                    // Handle the case where the value is not a valid integer
-                    // (e.g., log an error, set a default value, etc.)
+                    Log.e("Dashboard", "Target calories value is not a valid integer")
+                    showToast(applicationContext, "Invalid target calories value. Please set a valid target.")
+
                 }
             }
 
@@ -65,5 +88,8 @@ class Dashboard : AppCompatActivity() {
     fun toProfile(view: View){
         val profilePage = Intent(this, ProfileActivity::class.java)
         startActivity(profilePage)
+    }
+    fun showToast(context: Context, message: String) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 }

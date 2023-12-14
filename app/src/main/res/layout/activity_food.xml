@@ -53,11 +53,11 @@
                     app:layout_constraintVertical_bias="0.026" />
 
                 <TextView
-                    android:id="@+id/txtViewBreakfast2"
+                    android:id="@+id/txtViewFoods"
                     android:layout_width="104dp"
                     android:layout_height="24dp"
                     android:fontFamily="sans-serif-condensed-light"
-                    android:text="BREAKFAST"
+                    android:text="FOODS"
                     android:textColor="@color/black"
                     android:textSize="20dp"
                     android:textStyle="bold"
@@ -72,6 +72,7 @@
                     android:id="@+id/addButton1"
                     android:layout_width="29dp"
                     android:layout_height="29dp"
+                    android:clickable="true"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.958"
