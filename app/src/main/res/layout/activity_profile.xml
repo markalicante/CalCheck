@@ -7,6 +7,8 @@
     android:background="@drawable/backgroundapp"
     tools:context=".ProfileActivity">
 
+    <!-- Update Button -->
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="210dp"
@@ -17,24 +19,29 @@
         android:textColor="@color/black"
         android:textSize="35sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1" />
+        app:layout_constraintVertical_bias="0.023" />
+
+    <!-- Logout Button -->
 
     <TextView
         android:id="@+id/labelUName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="58dp"
         android:background="@color/white"
         android:text="Username"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.175"
+        app:layout_constraintHorizontal_bias="0.155"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.125" />
+        app:layout_constraintVertical_bias="0.047" />
 
     <TextView
         android:id="@+id/labelEmail"
@@ -45,10 +52,10 @@
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.162"
+        app:layout_constraintHorizontal_bias="0.143"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.237" />
+        app:layout_constraintVertical_bias="0.255" />
 
     <TextView
         android:id="@+id/labelPassword"
@@ -59,12 +66,11 @@
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.174"
+        app:layout_constraintHorizontal_bias="0.154"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.349" />
+        app:layout_constraintVertical_bias="0.386" />
 
-    <!-- Update Button -->
     <TextView
         android:id="@+id/labelTargetCalories"
         android:layout_width="wrap_content"
@@ -74,24 +80,25 @@
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.193"
+        app:layout_constraintHorizontal_bias="0.17"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.467" />
+        app:layout_constraintVertical_bias="0.512" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtEditUName"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="289dp"
         android:layout_height="58dp"
-        android:layout_marginTop="108dp"
         android:background="@color/white"
         app:boxStrokeColor="@color/black"
         app:endIconTint="@color/black"
         app:hintTextColor="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.16">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtTextUName"
@@ -108,14 +115,15 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="289dp"
         android:layout_height="58dp"
-        android:layout_marginTop="188dp"
         android:background="@color/white"
         app:boxStrokeColor="@color/black"
         app:endIconTint="@color/black"
         app:hintTextColor="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.298">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtTextEmail"
@@ -128,42 +136,19 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txtEditPassword"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="289dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="268dp"
-        android:background="@color/white"
-        app:boxStrokeColor="@color/black"
-        app:endIconTint="@color/black"
-        app:hintTextColor="@android:color/transparent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtTextPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:textColor="@color/black"
-            android:textColorHighlight="@color/black"
-            android:textColorLink="@color/black" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtEditTargetCalories"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="289dp"
         android:layout_height="58dp"
-        android:layout_marginTop="352dp"
         android:background="@color/white"
         app:boxStrokeColor="@color/black"
         app:endIconTint="@color/black"
         app:hintTextColor="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.57">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtTextTargetCalories"
@@ -176,29 +161,67 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Logout Button -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtEditPassword"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="289dp"
+        android:layout_height="58dp"
+        android:background="@color/white"
+        app:boxStrokeColor="@color/black"
+        app:endIconTint="@color/black"
+        app:hintTextColor="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.436">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/black"
+            android:textColorLink="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btnUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="428dp"
         android:backgroundTint="@color/steel_blue"
         android:text="Update"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.689" />
 
     <Button
         android:id="@+id/btnLogout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="488dp"
         android:backgroundTint="@color/steel_blue"
         android:text="Logout"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.777" />
+
+    <ImageView
+        android:id="@+id/prevPageButton3"
+        android:layout_width="64dp"
+        android:layout_height="66dp"
+        android:onClick="prevPage"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.917"
+        app:srcCompat="@drawable/backbutton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

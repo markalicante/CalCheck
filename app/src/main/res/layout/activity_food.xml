@@ -47,7 +47,7 @@
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.322"
+                    app:layout_constraintHorizontal_bias="0.354"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.026" />
@@ -97,23 +97,25 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="History"
-                    app:layout_constraintBottom_toTopOf="@+id/recyclerFood"
+                    android:backgroundTint="@color/steel_blue"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.792"
-                    app:layout_constraintStart_toEndOf="@+id/dateNow"
+                    app:layout_constraintHorizontal_bias="0.949"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.346" />
+                    app:layout_constraintVertical_bias="0.029" />
 
                 <Button
                     android:id="@+id/resetButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="@color/steel_blue"
                     android:text="Simulate Daily Reset"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.948" />
+                    app:layout_constraintVertical_bias="0.97" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -133,6 +135,19 @@
         app:layout_constraintVertical_bias="1.0">
 
         <ImageView
+            android:id="@+id/profileButton"
+            android:layout_width="67dp"
+            android:layout_height="66dp"
+            android:onClick="toProfile"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.147"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.478"
+            app:srcCompat="@drawable/profile" />
+
+        <ImageView
             android:id="@+id/logo"
             android:layout_width="124dp"
             android:layout_height="99dp"
@@ -143,18 +158,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.555"
             app:srcCompat="@drawable/applogo" />
-
-        <ImageView
-            android:id="@+id/profileButton"
-            android:layout_width="67dp"
-            android:layout_height="66dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.147"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.478"
-            app:srcCompat="@drawable/profile" />
 
         <ImageView
             android:id="@+id/prevPageButton"
