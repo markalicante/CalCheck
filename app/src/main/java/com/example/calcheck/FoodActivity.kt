@@ -85,6 +85,19 @@ class FoodActivity : AppCompatActivity() {
             //incrementCurrentDay()
         //}
 
+        // Set up the delete click listener in the adapter
+        foodAdapter.setOnDeleteClickListener { position ->
+            // Handle the delete operation here
+            deleteFoodItem(position)
+        }
+
+        foodAdapter.setOnItemClickListener { position ->
+            val foodItem = foodAdapter.foodList[position]
+            val intent = Intent(this, UpdFood::class.java)
+            intent.putExtra("foodItemId", foodItem.itemId)
+            startActivity(intent)
+        }
+
         val addButton1 = findViewById<ImageView>(R.id.addButton1)
         addButton1.setOnClickListener {
             val intent = Intent(this, AddFood::class.java)
@@ -95,6 +108,23 @@ class FoodActivity : AppCompatActivity() {
         historyButton.setOnClickListener {
             val intent = Intent(this, FoodHistoryActivity::class.java)
             startActivity(intent)
+        }
+    }
+
+    private fun deleteFoodItem(position: Int) {
+        val uid = FirebaseAuth.getInstance().currentUser?.uid
+        if (uid != null) {
+            val userFoodRef = databaseReference.child(uid).child("foods")
+            val foodItemToDelete = foodAdapter.foodList[position]
+
+            val itemId = foodItemToDelete.itemId
+            if (itemId != null) {
+                userFoodRef.child(itemId).removeValue()
+                showToast(applicationContext, "Food item deleted.")
+            } else {
+                Log.e("DeleteFoodItem", "Attempted to delete item with null itemId.")
+                showToast(applicationContext, "Failed to delete food item.")
+            }
         }
     }
 

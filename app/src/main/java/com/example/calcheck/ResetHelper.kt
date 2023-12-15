@@ -70,7 +70,7 @@ class ResetHelper {
                             // Create a FoodHistoryItem and add it to the history list
                             val historyItem = FoodHistoryItem(
                                 getCurrentDay(),
-                                listOf(FoodItem("Some Food", foodItem.calories ?: 0))
+                                listOf(FoodItem("", "Some Food",foodItem.calories ?: 0))
                             )
                             historyList.add(historyItem)
                         }

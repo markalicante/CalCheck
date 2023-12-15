@@ -1,8 +1,10 @@
 package com.example.calcheck
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
@@ -35,24 +37,38 @@ class AddFood : AppCompatActivity() {
         val foodName = foodNameEditText.text.toString()
         val calories = caloriesEditText.text.toString().toInt()
 
-        // Assume user is logged in, so you have the UID
+        // Assume the user is logged in, so you have the UID
         val uid = FirebaseAuth.getInstance().currentUser?.uid
 
         if (uid != null && foodName.isNotEmpty()) {
-            val foodItem = FoodItem(foodName, calories)
-
-            // Append the new food item to the user's food list
             val userFoodRef = databaseReference.child(uid).child("foods")
-            userFoodRef.push().setValue(foodItem)
 
-            // Clear input fields after adding
-            foodNameEditText.text.clear()
-            caloriesEditText.text.clear()
+            // Generate a unique key for the new food item
+            val newItemKey = userFoodRef.push().key
 
-            showToast(this, "Food added successfully!")
+            if (newItemKey != null) {
+                // Create a new FoodItem with the generated key
+                val foodItem = FoodItem(newItemKey, foodName, calories)
+
+                // Append the new food item to the user's food list
+                userFoodRef.child(newItemKey).setValue(foodItem)
+
+                // Clear input fields after adding
+                foodNameEditText.text.clear()
+                caloriesEditText.text.clear()
+
+                showToast(this, "Food added successfully!")
+            } else {
+                showToast(this, "Failed to generate a unique key for the new food item.")
+            }
         } else {
             showToast(this, "Invalid input. Please check your entries.")
         }
+    }
+
+    fun prevPage(view: View) {
+        val page2 = Intent(this, FoodActivity::class.java)
+        startActivity(page2)
     }
 
     fun showToast(context: Context, message: String) {
