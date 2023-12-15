@@ -38,6 +38,7 @@
                 android:id="@+id/btnUpd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/steel_blue"
                 android:layout_weight="1"
                 android:text="Update" />
 
@@ -45,6 +46,7 @@
                 android:id="@+id/btnDelete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/steel_blue"
                 android:layout_weight="1"
                 android:text="Delete" />
         </LinearLayout>
